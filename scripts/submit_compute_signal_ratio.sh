@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #  If true, run script in debug mode
 debug=true
@@ -38,7 +38,8 @@ function set_logs() {
 
 
 function set_args_opt() {
-    unset optional && typeset -g -a optional
+    #unset optional && typeset -g -a optional
+    optional=()
     if ${track}; then optional+=( --track ); fi
 
     if [[ -n "${scl_fct}" && "${scl_fct}" != "#N/A" ]]; then
