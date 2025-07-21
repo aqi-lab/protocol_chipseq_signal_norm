@@ -416,10 +416,20 @@ for d in "${arr_dep_min[@]}"; do
 done
 unset d
 
+
+check_arrays_lengths arr_fil_in arr_fil_ip
+check_arrays_lengths arr_fil_out arr_fil_ip
+check_arrays_lengths arr_scl_fct arr_fil_ip
+check_arrays_lengths arr_dep_min arr_fil_ip
+
+if false; then
+
 check_arrays_lengths "fil_in"  arr_fil_in  "fil_ip" arr_fil_ip
 check_arrays_lengths "fil_out" arr_fil_out "fil_ip" arr_fil_ip
 check_arrays_lengths "scl_fct" arr_scl_fct "fil_ip" arr_fil_ip
 check_arrays_lengths "dep_min" arr_dep_min "fil_ip" arr_fil_ip
+
+fi
 
 if ${slurm:-false}; then max_job=$(reset_max_job "${max_job}" "${#arr_fil_in[@]}"); fi
 
