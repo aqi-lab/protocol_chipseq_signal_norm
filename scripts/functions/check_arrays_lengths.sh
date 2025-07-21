@@ -7,7 +7,7 @@ function check_arrays_lengths() {
 
     #  Get array sizes using indirect references
     eval "local arr_siz_1=\${#${arr_nam_1}[@]}"
-    eval "local arr_siz_2=\${#${arr_nam_1}[@]}"
+    eval "local arr_siz_2=\${#${arr_nam_2}[@]}"
 
     # shellcheck disable=SC2154
     if [[ "${arr_siz_1}" -ne "${arr_siz_2}" ]]; then
