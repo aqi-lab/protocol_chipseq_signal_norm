@@ -305,7 +305,7 @@ else
             -eo|--err_out) err_out="${2}"; shift 2 ;;
             -nj|--nam_job) nam_job="${2}"; shift 2 ;;
             -en|--env_nam) env_nam="${2}"; shift 2 ;;
-            -ds|--dir_scr) scr_spk="${2}"; shift 2 ;;
+            -ds|--dir_scr) dir_scr="${2}"; shift 2 ;;
             *)
                 echo "## Unknown argument passed: ${1} ##" >&2
                 echo "" >&2
@@ -420,3 +420,5 @@ else
         process_sample ${idx}
     done
 fi
+
+
