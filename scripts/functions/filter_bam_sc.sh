@@ -103,7 +103,7 @@ EOM
 
     #  Do the main work
     #  Set the chromosomes to retain
-    chromosomes="I II III IV V VI VII VIII IX X XI XII XIII XIV XV XVI 2M"
+    chromosomes="I II III IV V VI VII VIII IX X XI XII XIII XIV XV XVI 2m"
     if ${mito}; then chromosomes="${chromosomes} Mito"; fi
 
     #  Convert the space-separated string of chromosomes to a pipe-separated
