@@ -20,4 +20,4 @@ count_alignments_bam() {
 
     echo "$count"
 }
-}
+
