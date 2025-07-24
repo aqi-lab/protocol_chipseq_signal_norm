@@ -1,23 +1,23 @@
 #!/bin/bash
 
-# Function: count_alignments_bam
-# Usage: count_alignments_bam <threads> <bam_file>
-# Returns: number of **mapped reads**, assuming paired-end BAMs
-
 count_alignments_bam() {
-    local threads="$1"
-    local bam="$2"
+    local threads="$1"; local bam="$2"
 
-    if [[ ! -f "$bam" ]]; then
-        echo "[ERROR] BAM file not found: $bam" >&2
-        echo "0"
-        return 1
-    fi
+    [[ ! -f "$bam" ]] && {
+      echo "[ERROR] BAM not found: $bam" >&2
+      echo 0; return 1
+    }
 
-    # Count number of **mapped reads**, assuming paired-end
-    # Exclude unmapped reads (flag 0x4), count only properly aligned reads
-    local count
-    count=$(samtools view -@ "${threads}" -f 0x2 -F 0x4 -c "$bam")
+    # Exclude unmapped, secondary, supplementary; then pick only the same FLAGs 
+    local count=$( \
+      samtools view -@ "$threads" -F 0x904 "$bam" \
+      | awk '$2==99   || $2==1123 \
+            || $2==163  || $2==1187 \
+            || $2==0    || $2==16   \
+            || $2==1024 || $2==1040' \
+      | wc -l \
+    )
 
     echo "$count"
+}
 }
