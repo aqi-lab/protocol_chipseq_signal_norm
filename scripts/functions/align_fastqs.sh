@@ -271,8 +271,9 @@ EOM
         #  Run Bowtie 2 with paired-end (top) or single-end (bottom) sequenced
         #+ reads
         if [[ -n "${fq_2}" ]]; then
-            args_bt2+=" --no-mixed --no-discordant"
-            args_bt2+=" --no-overlap --no-dovetail"
+            # Do not need Requirements this strict
+            #args_bt2+=" --no-mixed --no-discordant"
+            #args_bt2+=" --no-overlap --no-dovetail"
             args_bt2+=" -1 ${fq_1} -2 ${fq_2}"
         else
             args_bt2+=" -U ${fq_1}"
